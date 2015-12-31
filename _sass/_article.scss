@@ -1,0 +1,17 @@
+.article{
+	h3 {
+		text-align: center;
+		text-transform:uppercase;
+	}
+	.chart{
+		padding: $spacing-unit;
+		margin: $spacing-unit;
+		background-color: #f7f7f7;
+	}
+	.copy{
+		font-family: "Merriweather", serif;
+		font-size:18px;
+		width: 800px;
+		margin: auto;
+	}
+}
