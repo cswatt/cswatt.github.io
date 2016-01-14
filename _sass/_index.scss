@@ -112,6 +112,12 @@
 }
 
 #design {
+	.port-item{
+		width:25%;
+		img{
+			width:100%;
+		}
+	}
 	.portfolio-row{
 		display:-webkit-box;
 	display:-webkit-flex;
@@ -128,9 +134,5 @@
 
 	align-items: center;
 	-webkit-align-items: center;
-	}
-
-	.section-copy{
-		width: 50%;
 	}
 }
