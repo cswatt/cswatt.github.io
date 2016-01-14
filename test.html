@@ -1,108 +1,23 @@
 ---
-layout: page
+layout: default
 ---
 
-<div class="home article">
+<div class="home">
 
-  
-  <div class="copy">
-    <h1 class="page-heading">Tracking Gun Violence</h1>
-    <p><a href="http://www.vox.com/a/mass-shootings-calendar-2015">Apparently</a>, there have been <a href="https://www.washingtonpost.com/news/wonk/wp/2015/08/26/were-now-averaging-more-than-one-mass-shooting-per-day-in-2015/">more mass shootings</a> this year <a href="http://www.nytimes.com/2015/12/03/us/how-often-do-mass-shootings-occur-on-average-every-day-records-show.html">than there have been days</a>. Maybe. There’s more to unpack here.</p>
+  <h1 class="page-heading">Posts</h1>
 
-    <p>It depends on what you classify as a mass shooting event.</p>
-  </div>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-  <div class="chart">
-<h3 class="article">varying methodologies for counting</h3>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
 
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-<table id="table1" class="table table-striped">
-  <thead>
-    <tr>
-      <th class="col-md-2">Organization</th>
-      <th class="col-md-2">Term Defined</th>
-      <th class="col-md-7">Criteria</th>
-      <th class="col-md-1">Incidents</th>
-      <th class="col-md-1">Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>FBI</td>
-      <td>mass killing<sup>1</sup></td>
-      <td>An "active shooter" scenario<sup>2</sup> that falls under the federal distinction of "mass killing," i.e. three or more killings in a single incident<sup>3</sup></td>
-      <td>64</td>
-      <td>2014</td>
-    </tr>
-    <tr>
-      <td>Congressional Research Service</td>
-      <td>mass shooting</td>
-      <td>Multiple homicide incident in which four or more victims are murdered with firearms, within one event, and in one or more locations in close proximity.<sup>4</sup></td>
-      <td>25</td>
-      <td>2013</td>
-    </tr>
-    <tr>
-      <td>Gun Violence Archive</td>
-      <td>mass shooting</td>
-      <td>Four or more people shot</td>
-      <td>329</td>
-      <td>2015</td>
-    </tr>
-    <tr>
-      <td>USA Today</td>
-      <td>mass killing</td>
-      <td>Four or more people killed</td>
-      <td>25</td>
-      <td>2015</td>
-    </tr>
-    <tr>
-      <td>Mother Jones</td>
-      <td>mass shooting</td>
-      <td>Four or more people killed; excludes gang activity, armed robbery, domestic violence</td>
-      <td>4</td>
-      <td>2015</td>
-    </tr>
-  </tbody>
-</table>
-
-<small>
-<ol>
-<li/> It should be noted that the FBI also has a designation for <i>mass murder</i>, where four or more victims—not including the perpetrator(s)—are murdered in one event, in one or more locations in close proximity. See <a href="https://www.fbi.gov/stats-services/publications/serial-murder">Serial Murder: Multi-Disciplinary Perspectives for Investigators (July 2008)</a>.
-<li/> <a href="https://www.fbi.gov/news/stories/2014/september/fbi-releases-study-on-active-shooter-incidents/pdfs/a-study-of-active-shooter-incidents-in-the-u.s.-between-2000-and-2013">A Study of Active Shooter Incidents in the United States Between 2000 and 2013</a>
-<li/> <a href="https://www.congress.gov/112/plaws/publ265/PLAW-112publ265.pdf">Public Law 112-265</a>
-<li/><a href="http://fas.org/sgp/crs/misc/R44126.pdf">Mass Murder with Firearms: Incidents and Victims, 1999-2013</a>
-<li/><a href="http://www.gunviolencearchive.org/methodology">GVA General Methodology</a>
-<li/><a href="http://www.gannett-cdn.com/GDContent/mass-killings">Behind the Bloodshed</a>
-<li/><a href="http://www.motherjones.com/politics/2012/07/mass-shootings-map">A Guide to Mass Shootings in America</a>
-</ol>
-</small>
-</div>
-<div class="copy">
-<p>And depending on these definitions, they can tell a few different narratives.</p>
-
-<p>(timeseries chart)</p>
-</div>
-<div class="chart">
-<iframe src="/vis/shootings-stackedbar-time.html"frameborder="0" scrolling="no"></iframe>
-</div>
-<div class="copy">
-<p>People searching for guns</p>
-
-<p>(google trends vs gva)</p>
-
-<p>But here is the heart of the matter: how best do we frame these numbers to argue for or against gun control?</p>
-
-<p>And here is another question: considering that mass shootings are actually very, very rare, why do they provoke so much more fear and anxiety in the American consciousness than shootings of the non-mass variety? Why do these incidents receive so much media attention when (thousands other) gun deaths are ignored? </p>
-
-<p>Some hypotheses:</p>
-
-<ul>
-<li>Mass shootings are more rare. People are more interested in rare things, like gemstones and collectibles.</li>
-<li>Mass shootings take place in public (or semi-public) venues—schools, clinics, churches. They bring out the <em>it could happen to me</em> genre of disquiet.</li>
-<li>Speaking of <em>it could happen to me</em>, there’s something about the arbitrariness of victims that marks them as especially innocent. Public mourning tends to require that victims be innocent: see, for instance, the response to the Colorado Springs Planned Parenthood shooting, where some commentators withheld their sympathy for women whom they considered murderers.</li>
-<li>And this:</li>
-</ul>
-
-<p>Gun violence disproportionately affects people of color. Put another way: mass shooting incidents disproportionately affect white people.</p>
-</div>
 </div>
