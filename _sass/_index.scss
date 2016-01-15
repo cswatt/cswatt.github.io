@@ -1,9 +1,32 @@
+.hero{
+	border-radius:25px;
+	overflow:hidden;
+	width:100%;
+	img{
+		width: 100%;
+		height: auto;
+		border-radius:25px;
+	}
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+.sep{
+	width:100%;
+	border-top:1px solid #cccccc;
+	margin-top:25px;
+	margin-bottom:25px;
+}
 .content-container{
 	display:block;
 	margin: 25px auto;
 	width:70%;
 }
 .nav-container{
+	a {
+		text-decoration: none;
+		color: #000;
+	}
 	display:-webkit-box;
 	display:-webkit-flex;
 	display:-ms-flexbox;
@@ -90,6 +113,10 @@
 	text-decoration:none;
 }
 
+section{
+	margin-bottom:200px;
+}
+
 .portfolio-row {
 	display:-webkit-box;
 	display:-webkit-flex;
@@ -115,6 +142,32 @@
 	.section-copy{
 		width: 75%;
 	}
+}
+
+#stories{
+	p{
+		font-family:'Merriweather', serif;
+		line-height:1.5;
+	}
+	span{
+		font-family:'Merriweather', serif;
+		font-size:18px;
+	}
+	h2{
+		margin-left:25px;
+		text-transform:uppercase;
+		color: #454545;
+		font-size:20px;
+	}
+	h3{
+		font-family:'Merriweather', serif;
+		// color: #454545;
+		font-size:20px;
+	}
+}
+
+#interactive{
+
 }
 
 #design {
