@@ -1,0 +1,178 @@
+---
+layout: d3
+---
+<body><div class="chart">
+</div></body>
+<style>
+
+.chart {
+	width: 700px;
+
+	/*background-color: #ccc;*/
+	/*margin: 20px;*/
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.y.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: left;
+}
+
+/* Style northward tooltips differently */
+/*.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}*/
+
+.d3-tip.e:after {
+    content: "\25C0";
+    margin: -4px 0 0 0;
+    top: 50%;
+    left: -8px;
+  }
+
+/*  .d3-tip.w:after {
+    content: "\25B6";
+    margin: -4px 0 0 -1px;
+    top: 50%;
+    left: 100%;
+  }*/
+
+</style>
+<script>
+
+var margin = {top: 20, right: 20, bottom: 30, left: 150},
+    width = 1000 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.ordinal()
+    .rangeBands([0, height], 0.1);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(10);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .direction('e')
+  .offset([0, 10])
+  .html(function(d) {
+    return "<span style='color:#fff;font-family:sans-serif'>" + d.wordcount + " words, over " + d.no_speeches + " SOU addresses</span>";
+  })
+
+var svg = d3.select(".chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+svg.call(tip);
+d3.csv("/assets/data/sou-lengths.csv", type, function(error, data) {
+  if (error) throw error;
+
+  // x.domain(data.map(function(d) { return d.letter; }));
+  // y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+  // x.domain([d3.min(data, function(d){return d.year;}), d3.max(data, function(d){return d.year;})]);
+  
+  // x.domain([d3.min(data, function(d){return d.wordcount / d.no_speeches;}), d3.max(data, function(d){return d.wordcount / d.no_speeches;})]);
+  x.domain([0, d3.max(data, function(d){return d.wordcount / d.no_speeches;})]);
+  y.domain(data.map(function(d) { return d.president; }));
+
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+    // .append("text")
+    //   .attr("transform", "rotate(-90)")
+    //   .attr("x", 6)
+    //   .attr("dy", ".71em")
+    //   .style("text-anchor", "end")
+    //   .text("Word count");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      
+      .call(yAxis);
+    // .selectAll("text")
+    // 	.attr("y", 10)
+    // 	.attr("transform", "rotate(90)")
+    // 	.attr("dy", ".35em")
+    // 	.style("text-anchor", "start");
+
+
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      // .attr("x", function(d) { return x(d.wordcount); })
+      .attr("x", 0)
+      .attr("width", function(d) { return avg(d); })
+      .attr("y", function(d) { return y(d.president); })
+      .attr("height", y.rangeBand())
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
+});
+
+function avg(d) {
+  if(d.no_speeches == 0){
+    return 0;
+  } else {
+    return x(d.wordcount / d.no_speeches);
+  }
+}
+
+function type(d) {
+  d.wordcount = +d.wordcount;
+  return d;
+}
+
+</script>

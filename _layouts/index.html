@@ -4,14 +4,27 @@
   {% include head.html %}
 
   <body>
-
-<!--     {% include header.html %} -->
-
+  	<div class="content-container">
+	    <div class="nav-container">
+	      <div class="nav-head">
+	      <a href="{{site.baseurl}}/">
+	        Cecilia Saixue Watt
+	       </a>
+	      </div>
+	      <div class="nav-link-port">
+	        <ul>
+	          <li> <a href="/portfolio">portfolio</a>
+	          <li> <a href="/resume">resume</a>
+	          <li> <a href="/contact">contact</a>
+	        </ul>
+	      </div>
+	    </div>
 
         {{ content }}
 
-
+        <div style="height:20px;display:block;"></div>
     <!-- {% include footer.html %} -->
+    </div>
 
   </body>
 
