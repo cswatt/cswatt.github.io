@@ -25,13 +25,14 @@ layout: d3
   display: none;
   font-size: 12px;
   font-family: 'Helvetica';
-  left: 900px;
+  left: 20px;
   padding: 10px;
   position: absolute;
   text-align: left;
-  top: 95px;
+  top: 500px;
   width: 200px;
   z-index: 10;
+  opacity: 1;
 }
 
 .tooltip .headline{
@@ -42,8 +43,17 @@ layout: d3
 </style>
 
 <script>
-var width = 1200,
-    height = 800;
+var margin = {top: 20, right: 80, bottom: 30, left: 50};
+
+var width = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+width = width - margin.left - margin.right;
+var height = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+height = height - margin.top - margin.bottom;
+
 var projection = d3.geo.albers()
     .translate([width / 2, height / 2])
     .scale(1500);
@@ -110,7 +120,7 @@ function ready(error, us, shootings) {
         console.log('hello');
         tooltip.select('.headline').html(d.city + ', ' + d.state);
         tooltip.select('.stats').html('<b>Injured</b>: ' + d.injured + '<br/> <b>Killed</b>: ' + d.killed);
-        tooltip.select('.more').html('<a href="' + d.eve_url + '" target="_blank">More</a>');
+        tooltip.select('.more').html('<a href="' + d.eve_url + '" target="_blank">Source</a>');
         tooltip.style('display', 'block');
       });
       // .on("mouseout", function(d){
