@@ -14,8 +14,8 @@
 .sep{
 	width:100%;
 	border-top:1px solid #cccccc;
-	margin-top:25px;
-	margin-bottom:25px;
+	margin-top:100px;
+	margin-bottom:100px;
 }
 .content-container{
 	display:block;
@@ -113,9 +113,6 @@
 	text-decoration:none;
 }
 
-section{
-	margin-bottom:200px;
-}
 
 .portfolio-row {
 	display:-webkit-box;
@@ -167,7 +164,33 @@ section{
 }
 
 #interactive{
+	p, .story-link{
+		font-family:'Merriweather', serif;
+		line-height:1.5;
+	}
+	.section-img{
+		width:15%;
+		img{
+			padding:10px;
+		}
+	}
+	.section-copy{
+		width: 75%;
+	}
+}
+#interactive, #code{
+	h2{
+		text-align:center;
+	}
+}
 
+#code {
+	h3{
+		margin-left:25px;
+		text-transform:uppercase;
+		color: #454545;
+		font-size:20px;
+	}
 }
 
 #design {
@@ -193,12 +216,40 @@ section{
 		-webkit-box-pack: flex-start;
 		-webkit-justify-content: flex-start;
 		-ms-flex-pack: flex-start;
-
 		align-items: center;
 		-webkit-align-items: center;
 	}
 }
 
+#photography {
+	h2 {
+		text-align: center;
+	}
+	h3{
+		margin-left:25px;
+		text-transform:uppercase;
+		color: #454545;
+		font-size:15px;
+		text-align:left;
+	}
+	// text-align: center;
+	img{
+		padding:5px;
+		width:100px;
+		height: auto;
+	}
+
+	.vert img{
+		width:50px;
+	}
+}
+
+#illustration {
+	img {
+		width: 100px;
+		height: auto;
+	}
+}
 .resume-container {
 	.left{
 		float:left;

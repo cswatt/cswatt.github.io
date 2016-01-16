@@ -1,0 +1,15 @@
+---
+layout: vis
+title: Mass Shootings in 2015
+chartlink: /vis/shootings-map-gva.html
+permalink: /us-mass-shooting-map-2015/
+chart-height: 800
+---
+<p>
+A map of all incidents defined by the Gun Violence Archive as “mass shootings”—i.e., an incident involving firearms where four or more individuals were shot. This was originally a supplement to a <a href="2015/12/31/gunviolence.html">d​ata story about tracking gun violence</a>.​
+</p>
+<p>
+For each incident, the radius of the circle is a function of how many individuals were injured or killed. Clicking on each one will bring up an info box in the bottom left with a link to a local news article about the incident.
+</p>
+<p>
+Since the CSV download function on <a href="h​ttp://www.gunviolencearchive.org/">Gun Violence Archive​</a> has a few problems—namely that it doesn’t properly export the news source of the incident, and also it takes an extra click to see the lat/long coordinates of each incident—I wrote a little <a href="h​ttps://github.com/cswatt/gva­scraper">Python script </a> ​to scrape all the information I wanted into a CSV. The scraper relies on Beautiful Soup and the requests library. The map was then created using D3.</p>
