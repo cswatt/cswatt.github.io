@@ -141,7 +141,7 @@
 	}
 }
 
-#stories{
+#stories, #interactive{
 	p{
 		font-family:'Merriweather', serif;
 		line-height:1.5;
@@ -178,11 +178,7 @@
 		width: 75%;
 	}
 }
-#interactive, #code{
-	h2{
-		text-align:center;
-	}
-}
+
 
 #code {
 	h3{
